@@ -64,5 +64,3 @@ async def start(client: Client, message: Message):
             f"ʜᴇʏ {message.from_user.mention} ᴘᴍ ᴍᴇ ɪғ ʏᴏᴜ ɪɴᴛʀᴇsᴛᴇᴅ.",
             reply_markup=btn
         )
-
-app.run()
