@@ -57,15 +57,10 @@ async def ping(_, m: Message):
     ping1 = str(round((end_time - start_time) * 1000, 3)) + " ms"
     
     if m.from_user.id not in lul:
-        e = await m.reply_photo(photo=random.choice(photo), caption="**ᴘɪɴɢɪɴɢ▸▹▹**")
-        await rest(0.1)
-        await e.edit_text("**ᴘɪɴɢɪɴɢ▸▸▹**")
-        await rest(0.1)
-        await e.edit_text("**ᴘɪɴɢɪɴɢ▸▸▸**")
-        await rest(0.1)
-        await e.edit_text(PING_TEXT.format(ping1, up, __version__), reply_markup=Button)
+        e = await m.reply_photo(photo=random.choice(photo), caption="**ᴘɪɴɢ ᴇᴠᴇɴᴛ**")
+        await e.edit_text(PING_TEXT.format(ping1, up, __version__))
     else:
-        await m.reply(PING_TEXT.format(ping1, up, __version__), reply_markup=Button)
+        await m.reply(PING_TEXT.format(ping1, up, __version__))
 
 # ------------------------------------------------------------------------------- #
 
@@ -102,8 +97,7 @@ async def alive(_, msg: Message):
         "**⬝ ᴡᴏʀᴋɪɴɢ ᴡɪᴛʜ ᴛʜᴇ ᴘɪɴɢ ᴏꜰ -** `{}`\n"
         "**⬝ ᴘʏʀᴏɢʀᴀᴍ ᴠᴇʀꜱɪᴏɴ -** `2.0.106`\n"
         "**⬝ ᴅᴇᴠᴇʟᴏᴘᴇᴅ ʙʏ -** [ɢᴏᴊᴏ ꜱᴀᴛᴏʀᴜ](https://t.me/Gojo_Satoru_botx)\n"
-        "**⬝ ᴘʏᴛʜᴏɴ ᴠᴇʀꜱɪᴏɴ -** `3.11.12`\n╺╸╺╸╺╸╺╸╺╸╺╸╺╸╺╸╺╸".format(up, ping1),
-        reply_markup=Button,
+        "**⬝ ᴘʏᴛʜᴏɴ ᴠᴇʀꜱɪᴏɴ -** `3.11.12`\n╺╸╺╸╺╸╺╸╺╸╺╸╺╸╺╸╺╸".format(up, ping1)
     )
 
 # ------------------------------------------------------------------------------- #
