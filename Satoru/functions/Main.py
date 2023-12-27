@@ -1,7 +1,7 @@
 import asyncio
 import random
-from pyrogram import Client, InlineKeyboardButton, InlineKeyboardMarkup, enums
-from pyrogram.types import Message
+from pyrogram import Client, enums
+from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
 from pyrogram import filters
 from pyrogram.enums import ChatType
 from Satoru import app
