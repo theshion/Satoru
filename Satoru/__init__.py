@@ -45,8 +45,6 @@ arq = ARQ(ARQ_API_URL, ARQ_API_KEY, aiohttpsession)
 async def app_bot():
     global BOT_ID, BOT_NAME, BOT_USERNAME
     await app.start()
-    await userbot.start()
-    await pytgcalls.start()
     getme = await app.get_me()
     BOT_ID = getme.id
     BOT_USERNAME = getme.username
