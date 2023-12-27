@@ -8,7 +8,8 @@ from Satoru import app
 from config import BOT_USERNAME
 
 START_IMG = (
-
+"https://telegra.ph/file/84081fe2722a5357fee01.jpg",
+"https://telegra.ph/file/926d9a276831e88075142.jpg",
 )
 
 
