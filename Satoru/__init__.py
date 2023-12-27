@@ -32,14 +32,7 @@ app = Client(
     bot_token=config.BOT_TOKEN,
 )
 
-userbot = Client(
-    ":userbot:",
-    api_id=API_ID,
-    api_hash=API_HASH,
-    session_string=SESSION_STRING,
-)
 
-pytgcalls = PyTgCalls(userbot)
 
 async_mongo_client = async_mongo(config.MONGO_URL)
 db = async_mongo_client.Satoru
