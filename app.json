@@ -1,0 +1,34 @@
+{
+    "name": "Gojo satoru",
+    "logo": "https://telegra.ph/file/b3d7d74265a81f6218d80.jpg",
+    "description": "ɢʀᴏᴜᴘ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ ʙᴏᴛ ᴡɪᴛʜ ꜱᴏᴍᴇ ᴜɴɪợᴇ ᴀɴᴅ ɪɴʜᴀɴᴄᴇ ꜰᴇᴀᴛᴜʀᴇꜱ.",
+    "keywords": ["management", "assistant", "pyrogram"],
+    "repository": "https://github.com/Yuuivhiexe/Satoru",
+    "stack": "container",
+    "env": {
+        "BOT_USERNAME": {
+            "description": "Bot username",
+            "required": true 
+        },
+        "BOT_TOKEN": {
+            "description": "Bot token",
+            "required": true
+        },       
+        "SUDO_USERS": {
+            "description": "Sodo/elite users",
+            "required": true
+        },
+         "OWNER_ID": {
+            "description": "Owner id",
+            "required": true
+        }
+    },
+    "buildpacks": [
+    {
+      "url": "heroku/python"
+    },
+    {
+      "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git"
+    }
+  ]
+}
