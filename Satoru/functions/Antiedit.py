@@ -1,7 +1,7 @@
 import os
 from pyrogram import Client, filters
 from pyrogram.types import Message
-from Satoru import gojo as app
+from Satoru import app
 
 # Maintain edit count for each user
 edit_counts = {}
