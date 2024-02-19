@@ -1,14 +1,7 @@
 import os
 from pyrogram import Client, filters
 from pyrogram.types import Message
-
-# Initialize Pyrogram client
-API_ID = os.environ.get("API_ID")
-API_HASH = os.environ.get("API_HASH")
-BOT_TOKEN = os.environ.get("BOT_TOKEN")
-
-# Initialize Pyrogram client
-app = Client("my_bot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
+from Satoru import gojo as app
 
 # Maintain edit count for each user
 edit_counts = {}
@@ -69,4 +62,4 @@ async def authorize_command(client, message):
             await message.reply_text("Please provide a user ID to authorize.")
 
 # Run the bot
-app.run()
+#$$
