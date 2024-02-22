@@ -2,7 +2,6 @@ import asyncio
 import logging
 import time
 from pyrogram import *
-from pytgcalls import PyTgCalls
 from aiohttp import ClientSession
 from motor.motor_asyncio import AsyncIOMotorClient as async_mongo
 from importlib import import_module
@@ -55,4 +54,3 @@ async def app_bot():
 
 
 loop.run_until_complete(app_bot())
-
