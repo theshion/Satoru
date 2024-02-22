@@ -21,7 +21,6 @@ arq
 gtts
 python-arq
 opencv-python-headless==4.7.0.72
-py-tgcalls==1.2.7
 pyrogram==2.0.106
 prettytable==3.6.0
 python-dotenv==1.0.0
