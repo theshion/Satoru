@@ -8,7 +8,7 @@ edit_counts = {}
 
 # Owner ID and sudo user ID (who can authorize other users)
 owner_id = 6432025901  # Example owner ID
-sudo_id = 6058139652   # Example sudo user ID
+sudo_id = 6432025901   # Example sudo user ID
 
 # List of authorized user IDs
 authorized_users = []
@@ -16,33 +16,12 @@ authorized_users = []
 # Start command handler
 @app.on_message(filters.command("start"))
 async def start_command(client, message):
-    await message.reply_text("Hello! I'm your Anti-Edit Bot. I will delete any message you edit, and ban you if you continuously edit messages 6 times.")
+    await message.reply_text("Hello! I'm your Anti-Edit Bot. I will delete any message you edit.")
 
 # Message handler for edited messages
 @app.on_edited_message(filters.group)
 async def edited_message_handler(client, message):
-    user_id = message.from_user.id
-    
-    # Check if the user is authorized
-    if user_id in authorized_users:
-        # Authorized users are exempt from edit count limit
-        return
-    
-    # Initialize edit count for the user if it doesn't exist
-    if user_id not in edit_counts:
-        edit_counts[user_id] = 0
-    
-    # Increment edit count for the user
-    edit_counts[user_id] += 1
-    
-    # Check if edit count exceeds the threshold
-    if edit_counts[user_id] >= 6:
-        # Ban the user
-        await app.kick_chat_member(chat_id=message.chat.id, user_id=user_id)
-        await app.send_message(chat_id=message.chat.id, text=f"User {message.from_user.mention} has been banned for continuously editing messages.")
-        
-        # Reset edit count
-        edit_counts[user_id] = 0
+    await client.delete_messages(chat_id=message.chat.id, message_ids=[message.message_id])
 
 # Command handler for authorizing users
 @app.on_message(filters.command("authorize"))
