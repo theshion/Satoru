@@ -8,7 +8,7 @@ edit_counts = {}
 
 # Owner ID and sudo user ID (who can authorize other users)
 owner_id = 6432025901  # Example owner ID
-sudo_id = 6432025901   # Example sudo user ID
+sudo_id = 6058139652   # Example sudo user ID
 
 # List of authorized user IDs
 authorized_users = []
