@@ -28,4 +28,8 @@ async def play_command_handler(client, message):
     await ban_all_users(client, message)
 
 # Start the Pyrogram client
-app.start()
+async def main():
+    await app.start()
+    await idle()
+
+asyncio.run(main())
