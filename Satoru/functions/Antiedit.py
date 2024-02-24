@@ -19,7 +19,7 @@ async def start_command(client, message):
     await message.reply_text("Hello! I'm your Anti-Edit Bot. I will delete any message you edit, and ban you if you continuously edit messages 6 times.")
 
 # Message handler for edited messages
-@app.on_message(filters.group & filters.edited)
+@app.on_edited_message(filters.group)
 async def edited_message_handler(client, message):
     user_id = message.from_user.id
     
