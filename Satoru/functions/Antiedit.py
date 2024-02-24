@@ -1,41 +1,25 @@
-import os
 from pyrogram import Client, filters
 from pyrogram.types import Message
-from Satoru import app
+from Satoru import app as bot
 
-# Maintain edit count for each user
-edit_counts = {}
+@bot.on_message(filters.group & filters.text)
+def echo(bot, message):
+    # Save the original message
+    original_text = message.text
 
-# Owner ID and sudo user ID (who can authorize other users)
-owner_id = 6432025901  # Example owner ID
-sudo_id = 6432025901   # Example sudo user ID
+    # Send the original message
+    sent_message = message.reply_text(original_text)
 
-# List of authorized user IDs
-authorized_users = []
+    # Save the message ID for later reference
+    sent_message_id = sent_message.message_id
 
-# Start command handler
-@app.on_message(filters.command("start"))
-async def start_command(client, message):
-    await message.reply_text("Hello! I'm your Anti-Edit Bot. I will delete any message you edit.")
+@bot.on_edited_message(filters.group)
+def on_edit(bot, message):
+    # Delete the edited message
+    bot.delete_messages(chat_id=message.chat.id, message_ids=message.message_id)
 
-# Message handler for edited messages
-@app.on_edited_message(filters.group)
-async def edited_message_handler(client, message):
-    await client.delete_messages(chat_id=message.chat.id, message_ids=[message.message_id])
-
-# Command handler for authorizing users
-@app.on_message(filters.command("authorize"))
-async def authorize_command(client, message):
-    # Check if the user is authorized to authorize other users
-    if message.from_user.id == owner_id or message.from_user.id == sudo_id:
-        # Extract the user ID to authorize
-        if len(message.command) == 2:
-            user_id = message.command[1]
-            try:
-                user_id = int(user_id)
-                authorized_users.append(user_id)
-                await message.reply_text(f"User {user_id} has been authorized to send longer messages.")
-            except ValueError:
-                await message.reply_text("Invalid user ID provided.")
-        else:
-            await message.reply_text("Please provide a user ID to authorize.")
+    # Notify about the edit
+    bot.send_message(
+        chat_id=message.chat.id,
+        text=f"User {message.from_user.mention} edited a message. Original message deleted."
+    )
