@@ -18,4 +18,9 @@ async def delete_and_reply(_, msg):
     user_mention = msg.from_user.mention
     await app.send_message(msg.chat.id, f"Hey {user_mention}, please keep your messages short!")
 
-app.run()
+async def main():
+    await app.start()
+    await idle()
+
+if __name__ == "__main__":
+    asyncio.run(main())
