@@ -1,26 +1,18 @@
-
 from pyrogram import Client, filters
 from pyrogram.types import Message
-from Satoru import app as bot
+from Satoru import app
 
-@bot.on_message(filters.group & filters.text, group = 100)
-def echo(bot, message):
-    # Save the original message
-    original_text = message.text
+@app.on_edited_message(filters.group & ~filters.me)
+async def delete_edited_messages(client, edited_message):
+    await edited_message.delete()
 
-    # Send the original message
-    sent_message = message.reply_text(original_text)
+# ----------------------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------------------------
+def delete_long_messages(_, m):
+    return len(m.text.split()) > 10
 
-    # Save the message ID for later reference
-    sent_message_id = sent_message.message_id
-
-@bot.on_edited_message(filters.group, group=32)
-def on_edit(bot, message):
-    # Delete the edited message
-    bot.delete_messages(chat_id=message.chat.id, message_ids=message.message_id)
-
-    # Notify about the edit
-    bot.send_message(
-        chat_id=message.chat.id,
-        text=f"User {message.from_user.mention} edited a message. Original message deleted."
-  )
+@app.on_message(filters.group & filters.private & delete_long_messages)
+async def delete_and_reply(_, msg):
+    await msg.delete()
+    user_mention = msg.from_user.mention
+    await app.send_message(msg.chat.id, f"Hey {user_mention}, please keep your messages short!")
