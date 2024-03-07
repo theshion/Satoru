@@ -1,0 +1,29 @@
+import os
+import logging
+from pyrogram import Client, filters
+
+# Set up logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+
+# Initialize the client
+APP_ID = 25071254
+API_HASH = '5cb7bac198160c6dcf76f11da7b26a45'
+BOT_TOKEN = '7107642172:AAFYwJx9yScTRx0pUXCHlTC6ays_ZC-o5sA'
+
+client = Client(name="TelegramBot", api_id=APP_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
+
+# Define the start message
+@client.on_message(filters.command('start'))
+def start_command(client, message):
+    message.reply_text('Hello, I am a Telegram bot that can delete all stickers, media, videos, images, links, urls, music, voices and it has the rights to delete messages.')
+
+# Define the delete_all function
+@client.on_message(filters.text | filters.sticker | filters.photo | filters.video | filters.document | filters.voice | filters.animation | filters.audio | filters.video_note | filters.media_group | filters.caption)
+async def delete_all(client, message):
+    if message.from_user.id == client.me.id:
+        return
+    else:
+        await message.delete()
+
+# Run the bot
+client.run()
