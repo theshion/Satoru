@@ -17,7 +17,7 @@ START_IMG = (
 # ------------------------------------------------------------------------------- #
 
 START_TEXT = """
-**ʜᴇʏᴏ [{}](tg://user?id={}) **
+ʜᴇʏᴏ [{}](tg://user?id={}) 
 
 ⎌ 𝙸'ᴍ ɢᴏᴊᴏ ꜱᴀᴛᴏʀᴜ ᴛʜᴇ ꜱᴜᴘʀᴇᴍᴇ ᴀ.ɪ ᴅᴇꜱɪɢɴᴇᴅ ᴛᴏ ᴇɴʜᴀɴᴄᴇ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴡɪᴛʜ ᴀɴɪᴍᴇ ꜰᴇᴀᴛᴜʀᴇꜱ ᴀɴᴅ ᴀ ꜱᴇᴀᴍʟᴇꜱꜱ ᴍᴜꜱɪᴄ ᴇxᴘᴇʀɪᴇɴᴄᴇ.
 ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
@@ -42,9 +42,7 @@ async def start(client: Client, message: Message):
             InlineKeyboardButton("ꜰᴜɴᴄᴛɪᴏɴꜱ", callback_data="help_"),
         ],
         [
-            InlineKeyboardButton("ᴍᴜꜱɪᴄ-ᴜɴɪᴛ", callback_data="mhelp_")
-        ]
-    ]
+         
 
     reply_markup = InlineKeyboardMarkup(buttons)
     if message.chat.type == ChatType.PRIVATE:
@@ -63,4 +61,4 @@ async def start(client: Client, message: Message):
         await message.reply(
             f"ʜᴇʏ {message.from_user.mention} ᴘᴍ ᴍᴇ ɪғ ʏᴏᴜ ɪɴᴛʀᴇsᴛᴇᴅ.",
             reply_markup=btn
-        )
+    )
