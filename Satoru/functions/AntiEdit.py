@@ -49,13 +49,9 @@ async def message_handler(client, message):
 try:
     app.start()
 
-    # Run the Pyrogram client
-    app.idle()
-
 except KeyboardInterrupt:
     print("KeyboardInterrupt detected, stopping...")
     app.stop()
 
 finally:
-    # Close the Pyrogram client session
     pass
