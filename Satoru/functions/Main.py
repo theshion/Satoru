@@ -35,8 +35,8 @@ async def start(client: Client, message: Message):
             InlineKeyboardButton("ᴇɴʀɪᴄʜ ʏᴏᴜʀ ɢʀᴏᴜᴘ ɴᴏᴡ", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")
         ],
         [
-            InlineKeyboardButton("sᴜᴘᴘᴏʀᴛ", url="https://t.me/nexius_support"),
-            InlineKeyboardButton("ᴅᴇᴠᴇʟᴏᴘᴇʀ", url="https://t.me/fatherOfpaul"),
+            InlineKeyboardButton("sᴜᴘᴘᴏʀᴛ", url="https://t.me/AC_Anime_Group"),
+            InlineKeyboardButton("ᴅᴇᴠᴇʟᴏᴘᴇʀ", url="https://t.me/GodlyEmperor"),
         ],
         [
             InlineKeyboardButton("ꜰᴜɴᴄᴛɪᴏɴꜱ", callback_data="help_"),
