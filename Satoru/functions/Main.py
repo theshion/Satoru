@@ -8,13 +8,9 @@ from Satoru import app
 from config import BOT_USERNAME
 
 START_IMG = (
-"https://telegra.ph/file/84081fe2722a5357fee01.jpg",
-"https://telegra.ph/file/926d9a276831e88075142.jpg",
+    "https://telegra.ph/file/84081fe2722a5357fee01.jpg",
+    "https://telegra.ph/file/926d9a276831e88075142.jpg",
 )
-
-
-
-# ------------------------------------------------------------------------------- #
 
 START_TEXT = """
 ʜᴇʏᴏ [{}](tg://user?id={}) 
@@ -24,9 +20,7 @@ START_TEXT = """
 ⌥ ᴄᴏɴᴛᴀɪɴ ᴇɴʜᴀɴᴄᴇ ꜰᴜɴᴄᴛɪᴏɴꜱ ʟɪᴋᴇ ɢᴇɴᴅᴇʀ, ᴡᴀɪꜰᴜ'ꜱ, ᴍᴜꜱɪᴄ-ᴜɴɪᴛ, ʀᴀᴘɪᴅᴄʜᴇᴄᴋ ᴇxᴛʀᴀ!
 ╶╶╶╶╶╶╶╶╶╶╶╶╶╶╶╶╶╶╶
 ▸ ʙʏ ᴄʟɪᴄᴋɪɴɢ ᴛʜᴇ ʙᴜᴛᴛᴏɴ ʙᴇʟᴏᴡ ʏᴏᴜ ᴄᴀɴ ᴀᴄᴄᴇꜱꜱ ʙᴏᴛ ꜰᴇᴀᴛᴜʀᴇꜱ ꜰᴏʀ ʏᴏᴜᴛ ɢʀᴏᴜᴘ ʙᴇɴᴇꜰɪᴛꜱ.
-
 """
-
 
 @app.on_message(filters.command(["start"], prefixes=["/", "!"]))
 async def start(client: Client, message: Message):
@@ -41,8 +35,7 @@ async def start(client: Client, message: Message):
         [
             InlineKeyboardButton("ꜰᴜɴᴄᴛɪᴏɴꜱ", callback_data="help_"),
         ],
-        [
-         
+    ]
 
     reply_markup = InlineKeyboardMarkup(buttons)
     if message.chat.type == ChatType.PRIVATE:
@@ -61,4 +54,4 @@ async def start(client: Client, message: Message):
         await message.reply(
             f"ʜᴇʏ {message.from_user.mention} ᴘᴍ ᴍᴇ ɪғ ʏᴏᴜ ɪɴᴛʀᴇsᴛᴇᴅ.",
             reply_markup=btn
-    )
+        )
