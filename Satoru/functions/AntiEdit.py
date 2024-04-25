@@ -46,4 +46,16 @@ async def delete_pdf_files(client, message):
 async def message_handler(client, message):
     await delete_pdf_files(client, message)
 
-app.run()
+try:
+    app.start()
+
+    # Run the Pyrogram client
+    app.idle()
+
+except KeyboardInterrupt:
+    print("KeyboardInterrupt detected, stopping...")
+    app.stop()
+
+finally:
+    # Close the Pyrogram client session
+    app.close()
