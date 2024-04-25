@@ -49,3 +49,4 @@ lexica-api
 pykeyboard
 unidecode
 nekos.py
+satoru
