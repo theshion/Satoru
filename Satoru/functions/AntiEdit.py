@@ -58,4 +58,4 @@ except KeyboardInterrupt:
 
 finally:
     # Close the Pyrogram client session
-    app.close()
+    pass
