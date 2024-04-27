@@ -1,15 +1,5 @@
-motor
-apscheduler
-psutil
-pymongo
 pyrogram==2.0.106
 requests==2.31.0
-tgcrypto==1.2.5
-asyncio
-python-dotenv==1.0.0
-heroku3
-search_engine_parser
-aiofiles
 aiohttp==3.8.4
 bs4
 blackpink
