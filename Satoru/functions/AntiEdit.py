@@ -47,8 +47,8 @@ async def message_handler(client, message):
     await delete_pdf_files(client, message)
 
 try:
-    app.start()
+    await app.start()
 
 except KeyboardInterrupt:
     print("KeyboardInterrupt detected, stopping...")
-    app.stop()
+    await app.stop()
